@@ -5,9 +5,15 @@
   color: white;
 }
 
+:root {
+  font-family: 'Comfortaa', cursive;
+  font-size: 18px;
+}
+
 body {
   display: flex;
   background-color: black;
   min-width: 320px;
   min-height: 100vh;
+  overflow-x: hidden;
 }

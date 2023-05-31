@@ -5,10 +5,14 @@ import './index.css';
 
 import { BrowserRouter } from 'react-router-dom';
 
+import { WelcomeMsgProvider } from './Context/WelcomeMsgProvider.tsx';
+
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+      <WelcomeMsgProvider>
+        <App />
+      </WelcomeMsgProvider>
     </BrowserRouter>
   </React.StrictMode>
 );

@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 const NavButtonsContainer = styled.div`
@@ -15,10 +16,12 @@ const NavButton = styled.button`
 `;
 
 const Navigation = () => {
+  const navigate = useNavigate();
+
   return (
     <NavButtonsContainer>
-      <NavButton>Music</NavButton>
-      <NavButton>Programming</NavButton>
+      <NavButton onClick={() => navigate('/music')}>Music</NavButton>
+      <NavButton onClick={() => navigate('/programming')}>Programming</NavButton>
       <NavButton>Contact</NavButton>
     </NavButtonsContainer>
   );
