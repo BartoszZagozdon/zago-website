@@ -2,8 +2,9 @@ import styled from 'styled-components';
 
 import TrackCard from '../components/TrackCard';
 
-import musicPortfolio from '../utils/MusicPortfolio';
+import musicPortfolio from '../utils/musicPortfolio';
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const MusicContainer = styled.div`
   width: 73%;
@@ -39,6 +40,8 @@ const Music = () => {
 
   const [displayedMusic, setDisplayedMusic] = useState(musicPortfolio);
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     const query = searchQuery.toLowerCase();
     const filteredMusic = musicPortfolio.filter((track) => track.title.toLowerCase().includes(query));
@@ -55,7 +58,12 @@ const Music = () => {
       />
       <MusicContainer>
         {displayedMusic.map((track) => (
-          <TrackCard key={track.title} title={track.title} img={track.img} />
+          <TrackCard
+            onClick={() => navigate(`/music/${track.title}`)}
+            key={track.title}
+            title={track.title}
+            img={track.img}
+          />
         ))}
       </MusicContainer>
     </>

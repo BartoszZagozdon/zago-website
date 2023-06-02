@@ -24,9 +24,9 @@ const Title = styled.h2`
   font-size: 1.2rem;
 `;
 
-const TrackCard: React.FC<TrackType> = ({ title, img }) => {
+const TrackCard: React.FC<TrackType> = ({ title, img, onClick }) => {
   return (
-    <TrackCardContainer>
+    <TrackCardContainer onClick={onClick}>
       <Art src={img} />
       <Title>{title}</Title>
     </TrackCardContainer>

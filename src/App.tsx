@@ -7,6 +7,7 @@ import LandingPage from './routes/LandingPage';
 import HeaderComponent from './components/Header';
 import Programming from './routes/Programming';
 import Music from './routes/Music';
+import TrackDetail from './routes/TrackDetail';
 
 import { WelcomeMsgContext } from './Context/WelcomeMsgProvider';
 import { useContext } from 'react';
@@ -42,6 +43,7 @@ function App() {
             <Route path="/" element={<LandingPage />} />
             <Route path="/programming" element={<Programming />} />
             <Route path="/music" element={<Music />} />
+            <Route path="/music/:title" element={<TrackDetail />} />
           </Routes>
         </animated.div>
       ))}

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import AppCard from '../components/AppCard';
 
-import programmingPortfolio from '../utils/ProgrammingPortfolio';
+import programmingPortfolio from '../utils/programmingPortfolio';
 
 const ProgrammingContainer = styled.div`
   width: 73%;
