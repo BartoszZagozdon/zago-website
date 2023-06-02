@@ -12,7 +12,11 @@ const StyledPlay = styled(FaPlay)``;
 
 const StyledPause = styled(FaPause)``;
 
-const StyledSpeaker = styled(GiSpeaker)``;
+const StyledSpeaker = styled(GiSpeaker)`
+  background-color: green;
+  border-radius: 10px 10px;
+  width: 30px;
+`;
 
 const ProgressBar = styled.input<{ progress: number }>`
   -webkit-appearance: none;
@@ -55,12 +59,15 @@ const ProgressBar = styled.input<{ progress: number }>`
 
 const VolumeBar = styled.input<{ progress: number }>`
   -webkit-appearance: none;
-  width: 10px;
-  height: 50px;
+  width: 75px;
+  height: 5px;
   background: lime;
   outline: none;
   appearance: none;
   position: relative;
+
+  transform: rotate(270deg);
+  transform-origin: top left;
 
   &::-webkit-slider-thumb {
     -webkit-appearance: none;
@@ -68,6 +75,7 @@ const VolumeBar = styled.input<{ progress: number }>`
     width: 15px;
     height: 15px;
     background: pink;
+
     border-radius: 50%;
     cursor: pointer;
     margin-top: -5px;
@@ -77,14 +85,13 @@ const VolumeBar = styled.input<{ progress: number }>`
 
   &::-webkit-slider-runnable-track {
     height: 5px;
-    width: 5px;
     background: red;
     position: relative;
   }
   &::before {
     content: '';
     position: absolute;
-    top: 0;
+    bottom: 0;
     left: 0;
     height: 100%;
     width: ${({ progress }) => progress + 1 + '%'};
@@ -96,16 +103,16 @@ const VolumeBar = styled.input<{ progress: number }>`
 const VolumeContainer = styled.div<{ isDisplayed: boolean }>`
   display: flex;
   flex-direction: column;
-  justify-content: end;
   align-items: center;
-  position: relative;
-  height: ${({ isDisplayed }) => (isDisplayed ? '80px' : 'fit-content')};
+
+  // height: ${({ isDisplayed }) => (isDisplayed ? '80px' : 'fit-content')};
 `;
 
 const AudioPlayerContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 10px;
+  position: relative;
 `;
 
 const AudioPlayer = () => {
@@ -118,6 +125,9 @@ const AudioPlayer = () => {
   const [progressDone, setProgressDone] = useState(0);
 
   const [progressValue, setProgressValue] = useState(0);
+
+  const [volume, setVolume] = useState(0.5);
+  const [volumeIndicator, setVolumeIndicator] = useState(50);
 
   const audioElement = useRef<HTMLAudioElement>(null);
 
@@ -173,6 +183,23 @@ const AudioPlayer = () => {
 
   //volume
 
+  useEffect(() => {
+    if (audioElement.current) {
+      audioElement.current.volume = volume;
+    }
+  }, []);
+
+  const handleVolumeChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const newVolume = Number(e.target.value);
+    const newVolumeIndicator = Number(e.target.value) * 100;
+    console.log(newVolume);
+    if (audioElement.current) {
+      audioElement.current.volume = newVolume;
+      setVolume(newVolume);
+      setVolumeIndicator(newVolumeIndicator);
+    }
+  };
+
   return (
     <AudioPlayerContainer>
       <audio
@@ -195,20 +222,39 @@ const AudioPlayer = () => {
         progress={progressDone}
       />
       <div style={{ width: '45px' }}>{formatTime(duration)}</div>
-      <div style={{ position: 'relative' }}>
-        <div style={{ position: 'absolute' }}>
-          <VolumeContainer
-            isDisplayed={isVolume}
-            onMouseEnter={() => setIsVolume(true)}
-            onMouseLeave={() => setIsVolume(false)}
+
+      <VolumeContainer
+        isDisplayed={isVolume}
+        onMouseEnter={() => setIsVolume(true)}
+        onMouseLeave={() => setIsVolume(false)}
+      >
+        {isVolume && (
+          <div
+            style={{
+              position: 'absolute',
+              bottom: '20px',
+              background: 'green',
+              width: '30px',
+              height: '90px',
+              borderRadius: '10px 10px',
+              padding: '10px',
+            }}
           >
-            <div style={{ position: 'absolute', bottom: '30px' }}>
-              {isVolume && <VolumeBar progress={progressDone} />}
+            <div style={{ position: 'absolute', bottom: '0', left: '40%' }}>
+              <VolumeBar
+                type="range"
+                value={volume}
+                min={0}
+                max={1}
+                step={0.01}
+                onChange={handleVolumeChange}
+                progress={volumeIndicator}
+              />
             </div>
-            <StyledSpeaker />
-          </VolumeContainer>
-        </div>
-      </div>
+          </div>
+        )}
+        <StyledSpeaker />
+      </VolumeContainer>
     </AudioPlayerContainer>
   );
 };
