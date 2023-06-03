@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 
-import Blooming from '../assets/music/Blooming.mp3';
-
 import { FaPlay } from 'react-icons/fa';
 import { FaPause } from 'react-icons/fa';
 import { GiSpeaker } from 'react-icons/gi';
@@ -36,6 +34,7 @@ const ProgressBar = styled.input<{ progress: number }>`
     border-radius: 50%;
     cursor: pointer;
     margin-top: -5px;
+
     position: relative;
     z-index: 3;
   }
@@ -51,7 +50,7 @@ const ProgressBar = styled.input<{ progress: number }>`
     top: 0;
     left: 0;
     height: 100%;
-    width: ${({ progress }) => progress + 1 + '%'};
+    width: ${({ progress }) => progress + 0.5 + '%'};
     background: violet;
     z-index: 2;
   }
@@ -100,12 +99,10 @@ const VolumeBar = styled.input<{ progress: number }>`
   }
 `;
 
-const VolumeContainer = styled.div<{ isDisplayed: boolean }>`
+const VolumeContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  // height: ${({ isDisplayed }) => (isDisplayed ? '80px' : 'fit-content')};
 `;
 
 const AudioPlayerContainer = styled.div`
@@ -115,7 +112,7 @@ const AudioPlayerContainer = styled.div`
   position: relative;
 `;
 
-const AudioPlayer = () => {
+const AudioPlayer: React.FC<{ song: string }> = ({ song }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isVolume, setIsVolume] = useState(false);
 
@@ -172,7 +169,7 @@ const AudioPlayer = () => {
   const handleProgressDone = () => {
     const percent = (progressValue / duration) * 100;
 
-    setProgressDone(Math.floor(percent));
+    setProgressDone(percent);
   };
 
   const formatTime = (time: number) => {
@@ -203,7 +200,7 @@ const AudioPlayer = () => {
   return (
     <AudioPlayerContainer>
       <audio
-        src={Blooming}
+        src={song}
         preload="metadata"
         ref={audioElement}
         onTimeUpdate={handleTimeUpdate}
@@ -223,11 +220,7 @@ const AudioPlayer = () => {
       />
       <div style={{ width: '45px' }}>{formatTime(duration)}</div>
 
-      <VolumeContainer
-        isDisplayed={isVolume}
-        onMouseEnter={() => setIsVolume(true)}
-        onMouseLeave={() => setIsVolume(false)}
-      >
+      <VolumeContainer onMouseEnter={() => setIsVolume(true)} onMouseLeave={() => setIsVolume(false)}>
         {isVolume && (
           <div
             style={{
