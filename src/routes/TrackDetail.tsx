@@ -12,6 +12,11 @@ import WriteComment from '../components/WriteComment';
 import Comment from '../components/Comment';
 
 import { ReviewProvider } from '../context/ReviewProvider';
+import { useEffect, useState } from 'react';
+import { doc, onSnapshot } from 'firebase/firestore';
+import { db } from '../api/firebase';
+
+import ReviewType from '../Types/ReviewType';
 
 const TrackDetailContainer = styled.div`
   width: 73%;
@@ -59,9 +64,24 @@ const Title = styled.h1`
 const TrackDetail = () => {
   const { title } = useParams();
 
+  const [reviews, setReviews] = useState([]);
+
+  const dbId = (title ? (title === 'u ok' ? 'UOk' : title) : '').replace(/\s/g, '');
+
+  console.log(dbId);
+
+  const docRef = doc(db, 'reviews', dbId);
+
+  useEffect(() => {
+    onSnapshot(docRef, (snapshot) => {
+      setReviews(snapshot.data()?.review.reverse());
+    });
+  }, []);
+
   const trackIndex = musicPortfolio.findIndex((track) => title && track.title.includes(title));
 
   console.log(title);
+  console.log(typeof reviews);
 
   return (
     <TrackDetailContainer>
@@ -77,13 +97,10 @@ const TrackDetail = () => {
 
         <FeedbackContainer>
           <StarsFeedback />
-          <WriteComment title={title} />
-          <Comment />
-          <Comment />
-          <Comment />
-          <Comment />
-          <Comment />
-          <Comment />
+          <WriteComment dbId={dbId} />
+          {reviews.map((review: ReviewType, index) => {
+            return <Comment key={index} stars={review.stars} name={review.name} comment={review.comment} />;
+          })}
         </FeedbackContainer>
       </ReviewProvider>
     </TrackDetailContainer>

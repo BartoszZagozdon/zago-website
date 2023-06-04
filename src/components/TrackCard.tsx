@@ -5,7 +5,8 @@ import TrackType from '../Types/TrackType';
 const TrackCardContainer = styled.div`
   width: 250px;
   height: 270px;
-  border: 1px solid violet;
+  border: 2px solid violet;
+  border-radius: 20px 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;

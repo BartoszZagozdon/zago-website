@@ -6,12 +6,16 @@ import { GiSpeaker } from 'react-icons/gi';
 
 import { ChangeEvent, useEffect, useRef, useState } from 'react';
 
-const StyledPlay = styled(FaPlay)``;
+const StyledPlay = styled(FaPlay)`
+  background-color: #2a2f90;
+`;
 
-const StyledPause = styled(FaPause)``;
+const StyledPause = styled(FaPause)`
+  background-color: #2a2f90;
+`;
 
 const StyledSpeaker = styled(GiSpeaker)`
-  background-color: green;
+  background-color: #2a2f90;
   border-radius: 10px 10px;
   width: 30px;
 `;
@@ -41,7 +45,7 @@ const ProgressBar = styled.input<{ progress: number }>`
 
   &::-webkit-slider-runnable-track {
     height: 5px;
-    background: red;
+    background: #605eec;
     position: relative;
   }
   &::before {
@@ -84,7 +88,7 @@ const VolumeBar = styled.input<{ progress: number }>`
 
   &::-webkit-slider-runnable-track {
     height: 5px;
-    background: red;
+    background: #605eec;
     position: relative;
   }
   &::before {
@@ -198,57 +202,69 @@ const AudioPlayer: React.FC<{ song: string }> = ({ song }) => {
   };
 
   return (
-    <AudioPlayerContainer>
-      <audio
-        src={song}
-        preload="metadata"
-        ref={audioElement}
-        onTimeUpdate={handleTimeUpdate}
-        onDurationChange={handleDurationChange}
-      />
-      <button style={{ backgroundColor: 'black', border: 'none' }} onClick={togglePlay}>
-        {isPlaying ? <StyledPlay /> : <StyledPause />}
-      </button>
-      <div style={{ width: '45px' }}>{formatTime(currentTime)}</div>
-      <ProgressBar
-        type="range"
-        value={progressValue}
-        min={0}
-        max={duration}
-        onChange={handleProgressChange}
-        progress={progressDone}
-      />
-      <div style={{ width: '45px' }}>{formatTime(duration)}</div>
+    <div
+      style={{
+        padding: '15px',
+        backgroundColor: '#2A2F90',
+        borderRadius: '20px 20px',
+        display: 'flex',
+        alignItems: 'center',
+      }}
+    >
+      <AudioPlayerContainer>
+        <audio
+          src={song}
+          preload="metadata"
+          ref={audioElement}
+          onTimeUpdate={handleTimeUpdate}
+          onDurationChange={handleDurationChange}
+        />
+        <button style={{ backgroundColor: 'black', border: 'none' }} onClick={togglePlay}>
+          {isPlaying ? <StyledPlay /> : <StyledPause />}
+        </button>
+        <div style={{ width: '45px' }}>{formatTime(currentTime)}</div>
 
-      <VolumeContainer onMouseEnter={() => setIsVolume(true)} onMouseLeave={() => setIsVolume(false)}>
-        {isVolume && (
-          <div
-            style={{
-              position: 'absolute',
-              bottom: '20px',
-              background: 'green',
-              width: '30px',
-              height: '90px',
-              borderRadius: '10px 10px',
-              padding: '10px',
-            }}
-          >
-            <div style={{ position: 'absolute', bottom: '0', left: '40%' }}>
-              <VolumeBar
-                type="range"
-                value={volume}
-                min={0}
-                max={1}
-                step={0.01}
-                onChange={handleVolumeChange}
-                progress={volumeIndicator}
-              />
+        <ProgressBar
+          type="range"
+          value={progressValue}
+          min={0}
+          max={duration}
+          onChange={handleProgressChange}
+          progress={progressDone}
+        />
+
+        <div style={{ width: '45px' }}>{formatTime(duration)}</div>
+
+        <VolumeContainer onMouseEnter={() => setIsVolume(true)} onMouseLeave={() => setIsVolume(false)}>
+          {isVolume && (
+            <div
+              style={{
+                position: 'absolute',
+                bottom: '20px',
+                background: '#2A2F90',
+                width: '30px',
+                height: '90px',
+                borderRadius: '10px 10px',
+                padding: '10px',
+              }}
+            >
+              <div style={{ position: 'absolute', bottom: '0', left: '40%' }}>
+                <VolumeBar
+                  type="range"
+                  value={volume}
+                  min={0}
+                  max={1}
+                  step={0.01}
+                  onChange={handleVolumeChange}
+                  progress={volumeIndicator}
+                />
+              </div>
             </div>
-          </div>
-        )}
-        <StyledSpeaker />
-      </VolumeContainer>
-    </AudioPlayerContainer>
+          )}
+          <StyledSpeaker />
+        </VolumeContainer>
+      </AudioPlayerContainer>
+    </div>
   );
 };
 

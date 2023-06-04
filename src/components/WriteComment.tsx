@@ -31,11 +31,11 @@ const CommentInput = styled.input`
 const SubmitReview = styled.button`
   border: none;
   border-radius: 15px 15px;
-  background-color: violet;
+  background-color: #2a2f90;
   padding: 10px;
 `;
 
-const WriteComment: React.FC<{ title: string | undefined }> = ({ title }) => {
+const WriteComment: React.FC<{ dbId: string }> = ({ dbId }) => {
   const { stars } = useContext(ReviewContext);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -46,10 +46,6 @@ const WriteComment: React.FC<{ title: string | undefined }> = ({ title }) => {
         name: e.currentTarget.username.value,
         comment: e.currentTarget.comment.value,
       };
-
-      const dbId = title ? (title === 'u ok' ? 'UOk' : title) : '';
-
-      dbId.replace(/\s/g, '');
 
       const docRef = doc(db, 'reviews', dbId);
 

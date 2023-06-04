@@ -2,6 +2,8 @@ import styled from 'styled-components';
 
 import Stars from './Stars';
 
+import ReviewType from '../Types/ReviewType';
+
 const CommentContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -25,21 +27,18 @@ const NameStarContainer = styled.div`
   position: relative;
 `;
 
-const Comment = () => {
+const Comment: React.FC<ReviewType> = ({ stars, name, comment }) => {
   return (
     <CommentContainer>
       <NameStarContainer>
-        <CommentName>Debil</CommentName>
+        <CommentName>{name}</CommentName>
         {/* <div style={{ position: 'absolute', bottom: '75%', left: '50px' }}>
           <Stars stars={4.5} starSize={10} />
         </div> */}
-        <Stars stars={4.5} starSize={20} />
+        <Stars stars={stars} starSize={20} />
       </NameStarContainer>
 
-      <CommentContent>
-        Ale zajebiste japierdole normalnie najlepsze co słyszałem ale jestem debilem, więc ta muzyka też dla debili Ale
-        zajebiste japierdole normalnie najlepsze co słyszałem ale jestem debilem, więc ta muzyka też dla debili
-      </CommentContent>
+      <CommentContent>{comment}</CommentContent>
     </CommentContainer>
   );
 };
