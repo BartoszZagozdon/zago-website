@@ -9,7 +9,7 @@ import Programming from './routes/Programming';
 import Music from './routes/Music';
 import TrackDetail from './routes/TrackDetail';
 
-import { WelcomeMsgContext } from './Context/WelcomeMsgProvider';
+import { WelcomeMsgContext } from './context/WelcomeMsgProvider';
 import { useContext } from 'react';
 
 function App() {

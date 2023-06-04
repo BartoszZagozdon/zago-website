@@ -1,13 +1,15 @@
 import styled from 'styled-components';
 
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 
 import { HalfStar, FullStar, EmptyStar } from '../utils/Stars';
+import { ReviewContext } from '../context/ReviewProvider';
 
 const StarsContainer = styled.div`
   display: flex;
   gap: 10px;
   border: 0px solid red;
+  margin-top: 30px;
 `;
 
 const StarContainer = styled.div`
@@ -29,10 +31,21 @@ const StarsFeedback = () => {
 
   const [isScoreLocked, setIsScoreLocked] = useState(false);
 
-  console.log(score);
+  const { setStars } = useContext(ReviewContext);
 
   return (
-    <StarsContainer onMouseLeave={() => !isScoreLocked && setScore(0)} onClick={() => setIsScoreLocked(!isScoreLocked)}>
+    <StarsContainer
+      onMouseLeave={() => !isScoreLocked && setScore(0)}
+      onClick={() => {
+        if (isScoreLocked) {
+          setStars(0);
+          setIsScoreLocked(false);
+        } else {
+          setStars(score);
+          setIsScoreLocked(true);
+        }
+      }}
+    >
       <StarContainer>
         <StarHitBox
           onClick={() => setScore(0.5)}
