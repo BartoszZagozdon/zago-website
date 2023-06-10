@@ -13,6 +13,7 @@ const TrackCardContainer = styled.div`
   align-items: center;
   gap: 15px;
   padding: 20px;
+  cursor: pointer;
 `;
 
 const Art = styled.img`

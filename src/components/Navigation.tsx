@@ -8,7 +8,7 @@ const NavButtonsContainer = styled.div`
 `;
 
 const NavButton = styled.button`
-  background-color: green;
+  background-color: #58bf16;
   font-size: 1.2rem;
   padding: 10px 20px;
   border-radius: 20px 20px;

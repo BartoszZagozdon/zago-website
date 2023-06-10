@@ -1,14 +1,16 @@
 import styled from 'styled-components';
 
+import BorderRules from '../utils/borderAnimation';
+
 import AppCard from '../components/AppCard';
 
 import programmingPortfolio from '../utils/programmingPortfolio';
 
-const ProgrammingContainer = styled.div`
+const ProgrammingContainer = styled(BorderRules)`
   width: 73%;
   height: 70vh;
   font-size: 1.2rem;
-  border: 1px solid lime;
+  // border: 1px solid lime;
   margin-top: 30px;
   display: flex;
   flex-wrap: wrap;

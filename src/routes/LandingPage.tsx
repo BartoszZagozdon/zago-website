@@ -1,4 +1,6 @@
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
+
+import BorderRules from '../utils/borderAnimation';
 
 import MyPhoto from '../assets/my_photo.jfif';
 
@@ -18,25 +20,9 @@ const PhotoStyled = styled.img`
   border-radius: 50%;
 `;
 
-const GradientBorderAnimation = keyframes`
-  0% {
-    border-image-source: linear-gradient(to left, #743a11, #d53a9a);
-  }
-  50% {
-    border-image-source: linear-gradient(to left, #7ffa23, #d53aaa);
-  }
-  100% {
-    linear-gradient(to left, #743ad5, #d53a9d);
-  }
-`;
-
-const Article = styled.article`
+const Article = styled(BorderRules)`
   width: 80%;
   height: 60vh;
-  border: 2px solid;
-  border-image-slice: 1;
-  border-image-source: linear-gradient(to left, #743ad5, #d53a9d);
-  animation: ${GradientBorderAnimation} 3s linear infinite;
   font-size: 1.4rem;
   position: absolute;
   top: 50%;

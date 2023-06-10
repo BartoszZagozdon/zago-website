@@ -59,7 +59,7 @@ const WriteComment: React.FC<{ dbId: string }> = ({ dbId }) => {
     <WriteCommentContainer onSubmit={handleSubmit}>
       <NameInput id="username" placeholder="Write your name here..." />
       <CommentInput id="comment" placeholder="Write your comment here..." />
-      <SubmitReview>Submit Review</SubmitReview>
+      <SubmitReview type="submit">Submit Review</SubmitReview>
     </WriteCommentContainer>
   );
 };

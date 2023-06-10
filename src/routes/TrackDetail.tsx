@@ -1,11 +1,14 @@
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 
+import BorderRules from '../utils/borderAnimation';
+
 import musicPortfolio from '../utils/musicPortfolio';
 
 import AudioPlayer from '../components/AudioPlayer';
 import StarsFeedback from '../components/StarsFeedback';
 import Stars from '../components/Stars';
+import Loader from '../components/Loader';
 
 import WriteComment from '../components/WriteComment';
 
@@ -18,11 +21,10 @@ import { db } from '../api/firebase';
 
 import ReviewType from '../Types/ReviewType';
 
-const TrackDetailContainer = styled.div`
+const TrackDetailContainer = styled(BorderRules)`
   width: 73%;
   min-height: 70vh;
   font-size: 1.2rem;
-  border: 1px solid lime;
   margin-top: 30px;
   display: flex;
   flex-direction: column;
@@ -49,6 +51,7 @@ const TitlePlayerWrapper = styled.div`
   align-items: start;
   justify-content: center;
   height: 300px;
+  margin-left: 40px;
 `;
 
 const FeedbackContainer = styled.div`
@@ -65,16 +68,21 @@ const TrackDetail = () => {
   const { title } = useParams();
 
   const [reviews, setReviews] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const dbId = (title ? (title === 'u ok' ? 'UOk' : title) : '').replace(/\s/g, '');
-
-  console.log(dbId);
+  const dbId = (title ? (title === 'u ok' ? 'UOk' : title === 'WatashiWa!' ? 'WatashiWa' : title) : '').replace(
+    /\s/g,
+    ''
+  );
 
   const docRef = doc(db, 'reviews', dbId);
 
   useEffect(() => {
     onSnapshot(docRef, (snapshot) => {
-      setReviews(snapshot.data()?.review.reverse());
+      setIsLoading(false);
+      const reviewsData = snapshot.data()?.review.reverse();
+
+      setReviews(reviewsData);
     });
   }, []);
 
@@ -82,6 +90,16 @@ const TrackDetail = () => {
 
   console.log(title);
   console.log(typeof reviews);
+
+  let avgStars = 0;
+
+  reviews.forEach((review: ReviewType) => {
+    avgStars += review.stars;
+  });
+
+  avgStars = reviews.length ? Math.round((avgStars / reviews.length) * 2) / 2 : 0;
+
+  console.log(avgStars);
 
   return (
     <TrackDetailContainer>
@@ -92,12 +110,13 @@ const TrackDetail = () => {
             <Title>{musicPortfolio[trackIndex].title}</Title>
             <AudioPlayer song={musicPortfolio[trackIndex].src} />
           </TitlePlayerWrapper>
-          <Stars stars={3} starSize={40} />
+          <Stars stars={avgStars} starSize={40} />
         </TrackOverview>
 
         <FeedbackContainer>
           <StarsFeedback />
           <WriteComment dbId={dbId} />
+          {isLoading && <Loader />}
           {reviews.map((review: ReviewType, index) => {
             return <Comment key={index} stars={review.stars} name={review.name} comment={review.comment} />;
           })}

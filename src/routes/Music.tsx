@@ -1,16 +1,18 @@
 import styled from 'styled-components';
 
+import BorderRules from '../utils/borderAnimation';
+
 import TrackCard from '../components/TrackCard';
 
 import musicPortfolio from '../utils/musicPortfolio';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const MusicContainer = styled.div`
+const MusicContainer = styled(BorderRules)`
   width: 73%;
   min-height: 70vh;
   font-size: 1.2rem;
-  border: 2px solid lime;
+
   border-radius: 10px 10px;
   margin-top: 30px;
   display: flex;

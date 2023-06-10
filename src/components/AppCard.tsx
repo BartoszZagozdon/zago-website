@@ -33,7 +33,7 @@ const LinksContainer = styled.div`
 
 const Link = styled.a`
   text-decoration: none;
-  border: 2px solid lime;
+  border: 2px solid #58bf16;
   padding: 5px;
   border-radius: 10px 10px;
   width: 130px;
