@@ -5,6 +5,8 @@ import BorderRules from '../utils/borderAnimation';
 import AppCard from '../components/AppCard';
 
 import programmingPortfolio from '../utils/programmingPortfolio';
+import { useContext, useEffect } from 'react';
+import { WelcomeMsgContext } from '../context/WelcomeMsgProvider';
 
 const ProgrammingContainer = styled(BorderRules)`
   width: 73%;
@@ -21,6 +23,12 @@ const ProgrammingContainer = styled(BorderRules)`
 `;
 
 const Programming = () => {
+  const { setMsg } = useContext(WelcomeMsgContext);
+
+  useEffect(() => {
+    setMsg('Programming');
+  }, []);
+
   return (
     <ProgrammingContainer>
       {programmingPortfolio.map((app) => (

@@ -58,6 +58,14 @@ const ProgressBar = styled.input<{ progress: number }>`
     background: violet;
     z-index: 2;
   }
+
+  @media only screen and (max-width: 1560px) {
+    width: 200px;
+  }
+
+  @media only screen and (max-width: 970px) {
+    width: 150px;
+  }
 `;
 
 const VolumeBar = styled.input<{ progress: number }>`
@@ -209,6 +217,7 @@ const AudioPlayer: React.FC<{ song: string }> = ({ song }) => {
         borderRadius: '20px 20px',
         display: 'flex',
         alignItems: 'center',
+        marginTop: '10px',
       }}
     >
       <AudioPlayerContainer>

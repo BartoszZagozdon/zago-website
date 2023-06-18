@@ -10,7 +10,7 @@ import Music from './routes/Music';
 import TrackDetail from './routes/TrackDetail';
 
 import { WelcomeMsgContext } from './context/WelcomeMsgProvider';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 
 function App() {
   const { msg } = useContext(WelcomeMsgContext);

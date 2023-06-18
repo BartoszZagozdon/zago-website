@@ -38,11 +38,21 @@ const TrackOverview = styled.div`
   justify-content: start;
   gap: 10px;
   text-align: center;
+
+  @media only screen and (max-width: 845px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 const ArtBig = styled.img`
   width: 300px;
   height: 300px;
+
+  @media only screen and (max-width: 1560px) {
+    width: 200px;
+    height: 200px;
+  }
 `;
 
 const TitlePlayerWrapper = styled.div`
@@ -50,8 +60,17 @@ const TitlePlayerWrapper = styled.div`
   flex-direction: column;
   align-items: start;
   justify-content: center;
-  height: 300px;
   margin-left: 40px;
+  flex-grow: 1;
+
+  @media only screen and (max-width: 1300px) {
+    flex-grow: 0;
+    align-items: center;
+  }
+
+  @media only screen and (max-width: 970px) {
+    margin-left: 10px;
+  }
 `;
 
 const FeedbackContainer = styled.div`
@@ -61,7 +80,7 @@ const FeedbackContainer = styled.div`
 `;
 
 const Title = styled.h1`
-  margin-bottom: 50px;
+  margin-bottom: 10px;
 `;
 
 const TrackDetail = () => {
@@ -108,9 +127,9 @@ const TrackDetail = () => {
           <ArtBig src={musicPortfolio[trackIndex].img} />
           <TitlePlayerWrapper>
             <Title>{musicPortfolio[trackIndex].title}</Title>
+            <Stars stars={avgStars} starSize={40} />
             <AudioPlayer song={musicPortfolio[trackIndex].src} />
           </TitlePlayerWrapper>
-          <Stars stars={avgStars} starSize={40} />
         </TrackOverview>
 
         <FeedbackContainer>

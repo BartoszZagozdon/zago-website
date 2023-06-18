@@ -1,4 +1,5 @@
 import styled, { keyframes } from 'styled-components';
+import { TypeAnimation } from 'react-type-animation';
 
 import logo from '../assets/logo.png';
 
@@ -20,32 +21,32 @@ const glowAnimation = keyframes`
 const Header = styled.header`
   width: 100%;
   min-height: 200px;
-  border: 0px solid lime;
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding-inline: 30px;
+  justify-content: space-around;
+  padding-inline: 90px;
 `;
 
 const Location = styled.h1`
   font-size: 3rem;
-  margin-right: 13%;
+  white-space: nowrap;
 `;
 
 const Logo = styled.img`
   width: 150px;
   height: 150px;
-  margin-right: 40px;
   animation: ${glowAnimation} 2s infinite;
 `;
 
-const HeaderComponent: React.FC<{ msg: string | undefined }> = ({ msg }) => {
+const HeaderComponent: React.FC<{ msg: string }> = ({ msg }) => {
   const navigate = useNavigate();
 
   return (
     <Header>
       <Logo src={logo} onClick={() => navigate('/')} />
-      <Location>{msg}</Location>
+      <Location>
+        <TypeAnimation key={msg} sequence={[msg]} cursor color="#FFFFFF" />
+      </Location>
       <Navigation />
     </Header>
   );

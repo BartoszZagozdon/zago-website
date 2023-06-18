@@ -5,7 +5,11 @@ import { HalfStar, FullStar, EmptyStar } from '../utils/Stars';
 const StarsContainer = styled.div`
   display: flex;
   gap: 10px;
-  margin: auto;
+  margin-left: auto;
+
+  @media only screen and (max-width: 1300px) {
+    margin-inline: auto;
+  }
 `;
 
 const StarContainer = styled.div<{ size: number }>`
