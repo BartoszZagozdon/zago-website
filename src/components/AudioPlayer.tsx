@@ -164,7 +164,6 @@ const AudioPlayer: React.FC<{ song: string }> = ({ song }) => {
   };
 
   const handleProgressChange = (e: ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target.value);
     const newTime = Number(e.target.value);
     if (audioElement.current) {
       audioElement.current.currentTime = newTime;
@@ -201,7 +200,6 @@ const AudioPlayer: React.FC<{ song: string }> = ({ song }) => {
   const handleVolumeChange = (e: ChangeEvent<HTMLInputElement>) => {
     const newVolume = Number(e.target.value);
     const newVolumeIndicator = Number(e.target.value) * 100;
-    console.log(newVolume);
     if (audioElement.current) {
       audioElement.current.volume = newVolume;
       setVolume(newVolume);

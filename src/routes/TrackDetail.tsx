@@ -107,9 +107,6 @@ const TrackDetail = () => {
 
   const trackIndex = musicPortfolio.findIndex((track) => title && track.title.includes(title));
 
-  console.log(title);
-  console.log(typeof reviews);
-
   let avgStars = 0;
 
   reviews.forEach((review: ReviewType) => {
@@ -117,8 +114,6 @@ const TrackDetail = () => {
   });
 
   avgStars = reviews.length ? Math.round((avgStars / reviews.length) * 2) / 2 : 0;
-
-  console.log(avgStars);
 
   return (
     <TrackDetailContainer>
