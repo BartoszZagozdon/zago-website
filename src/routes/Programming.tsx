@@ -10,7 +10,7 @@ import { WelcomeMsgContext } from '../context/WelcomeMsgProvider';
 
 const ProgrammingContainer = styled(BorderRules)`
   width: 73%;
-  height: 70vh;
+  min-height: 70vh;
   font-size: 1.2rem;
   // border: 1px solid lime;
   margin-top: 30px;

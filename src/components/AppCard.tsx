@@ -3,8 +3,9 @@ import styled from 'styled-components';
 import AppType from '../Types/AppType';
 
 const AppCardStyled = styled.div`
-  width: 25%;
+  width: 300px;
   height: 40%;
+  min-height: 230px;
   border: 2px solid violet;
   border-radius: 20px 20px;
   display: flex;
@@ -38,6 +39,7 @@ const Link = styled.a`
   border-radius: 10px 10px;
   width: 130px;
   text-align: center;
+  font-size: 1.2rem;
 `;
 
 const AppCard: React.FC<AppType> = ({ repo, demo, name, description }) => {

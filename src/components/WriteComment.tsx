@@ -16,6 +16,7 @@ const WriteCommentContainer = styled.form`
 
 const NameInput = styled.input`
   width: 20%;
+  min-width: 150px;
   height: 30px;
   border: 1px solid violet;
   background-color: black;

@@ -5,8 +5,9 @@ import BorderRules from '../utils/borderAnimation';
 import TrackCard from '../components/TrackCard';
 
 import musicPortfolio from '../utils/musicPortfolio';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { WelcomeMsgContext } from '../context/WelcomeMsgProvider';
 
 const MusicContainer = styled(BorderRules)`
   width: 73%;
@@ -26,6 +27,7 @@ const MusicContainer = styled(BorderRules)`
 const SearchInput = styled.input`
   margin-top: 30px;
   width: 15%;
+  min-width: 180px;
   height: 30px;
   color: #0de1cd;
   font-size: 1.2rem;
@@ -41,6 +43,12 @@ const SearchInput = styled.input`
 `;
 
 const Music = () => {
+  const { setMsg } = useContext(WelcomeMsgContext);
+
+  useEffect(() => {
+    setMsg('My Tunes');
+  }, []);
+
   const [searchQuery, setSearchQuery] = useState('');
 
   const [displayedMusic, setDisplayedMusic] = useState(musicPortfolio);

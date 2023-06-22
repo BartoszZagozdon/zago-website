@@ -24,7 +24,7 @@ const PhotoStyled = styled.img`
 
 const Article = styled(BorderRules)`
   width: 80%;
-  height: 60vh;
+  min-height: 60vh;
   font-size: 1.4rem;
   position: absolute;
   top: 50%;
@@ -44,7 +44,7 @@ const LandingPage = () => {
   const { setMsg } = useContext(WelcomeMsgContext);
 
   useEffect(() => {
-    setMsg('Hi! My name is Zago ;)');
+    setMsg("Hi! I'm Bartek ;)");
   }, []);
 
   return (

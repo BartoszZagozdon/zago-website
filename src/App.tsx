@@ -8,9 +8,10 @@ import HeaderComponent from './components/Header';
 import Programming from './routes/Programming';
 import Music from './routes/Music';
 import TrackDetail from './routes/TrackDetail';
+import Contact from './routes/Contact';
 
 import { WelcomeMsgContext } from './context/WelcomeMsgProvider';
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 
 function App() {
   const { msg } = useContext(WelcomeMsgContext);
@@ -44,6 +45,7 @@ function App() {
             <Route path="/programming" element={<Programming />} />
             <Route path="/music" element={<Music />} />
             <Route path="/music/:title" element={<TrackDetail />} />
+            <Route path="/contact" element={<Contact />} />
           </Routes>
         </animated.div>
       ))}

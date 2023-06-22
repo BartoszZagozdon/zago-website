@@ -8,7 +8,7 @@ export const WelcomeMsgContext = createContext<WelcomeMsgContextType>({
 });
 
 export const WelcomeMsgProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [msg, setMsg] = useState('Hi! My name is Zago ;)');
+  const [msg, setMsg] = useState("Hi! I'm Bartek ;)");
 
   return <WelcomeMsgContext.Provider value={{ msg, setMsg }}>{children}</WelcomeMsgContext.Provider>;
 };

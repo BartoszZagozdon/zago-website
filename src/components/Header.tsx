@@ -25,17 +25,40 @@ const Header = styled.header`
   align-items: center;
   justify-content: space-around;
   padding-inline: 90px;
+  position: relative;
 `;
 
 const Location = styled.h1`
   font-size: 3rem;
   white-space: nowrap;
+  position: absolute;
+  left: 20%;
+
+  @media only screen and (max-width: 1400px) {
+    left: 20%;
+  }
+
+  @media only screen and (max-width: 850px) {
+    left: 150px;
+  }
 `;
 
 const Logo = styled.img`
   width: 150px;
   height: 150px;
   animation: ${glowAnimation} 2s infinite;
+  position: absolute;
+  left: 10%;
+
+  @media only screen and (max-width: 1400px) {
+    left: 5%;
+  }
+  @media only screen and (max-width: 1000px) {
+    left: 2%;
+  }
+  @media only screen and (max-width: 850px) {
+    left: 0;
+  }
 `;
 
 const HeaderComponent: React.FC<{ msg: string }> = ({ msg }) => {
