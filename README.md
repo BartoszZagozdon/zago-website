@@ -1,6 +1,6 @@
 # Zago Website
 
-Welcome to the Zago Website repository! This website serves as a portfolio for Bartosz Zagozdon's front-end projects and music compositions.
+Welcome to the Zago Website repository! This website serves as a portfolio for my front-end projects and music compositions.
 
 ## About
 
