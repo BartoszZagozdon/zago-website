@@ -29,4 +29,5 @@ The Zago Website is a showcase of Bartosz Zagozdon's front-end projects and musi
 - react-spring
 - react-icons
 - react-douter-dom
+- react-type-animation
 - Firebase
