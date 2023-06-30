@@ -48,8 +48,12 @@ const AppCard: React.FC<AppType> = ({ repo, demo, name, description }) => {
       <AppName>{name}</AppName>
       <AppDescription>{description}</AppDescription>
       <LinksContainer>
-        <Link href={repo}>GitHub</Link>
-        <Link href={demo}>Live Demo</Link>
+        <Link target="_blank" href={repo}>
+          GitHub
+        </Link>
+        <Link target="_blank" href={demo}>
+          Live Demo
+        </Link>
       </LinksContainer>
     </AppCardStyled>
   );

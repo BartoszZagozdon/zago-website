@@ -51,18 +51,11 @@ const LandingPage = () => {
     <AboutMeSectionContainer>
       <PhotoStyled src={MyPhoto} />
       <Article>
-        {/* Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi atque corporis modi necessitatibus itaque,
-        reiciendis numquam delectus? Veritatis quod eveniet culpa odio voluptatibus asperiores, laborum officia voluptas
-        sed enim aspernatur, inventore eos quam facilis quos, quas natus. Quibusdam, consequatur neque dignissimos,
-        ipsam excepturi doloribus amet dolor voluptas tenetur impedit quas pariatur autem atque cum eos odit quisquam
-        temporibus est suscipit cupiditate asperiores reiciendis error officiis? Eveniet fugiat commodi aperiam, enim,
-        ut minima ab temporibus nisi ipsum labore unde voluptatibus voluptatum nam incidunt quia et nulla corporis earum
-        quis consequuntur odio totam. Non corporis molestias aspernatur qui officiis voluptates deleniti natus! */}
-        Hello there! My real name is Bartosz Zagozdon but I go by Zago when it comes to music production. I'm trying to
-        get my first job as a Front-end Developer, since it always was a dream of mine and you can find my (I hope) cool
-        projects in the 'Programming' section. I also really enjoy making electronic music as a hobby and I welcome you
-        to check out my music in the 'Music' section where you can also leave me some feedback which is much
-        appreciated!
+        Hello there! My real name is Bartosz Zagozdon, but I go by Zago when it comes to music production. I'm currently
+        pursuing my dream of becoming a Front-end Developer, and you can find some of my (hopefully) cool projects in
+        the 'Programming' section. Apart from coding, I have a great passion for making electronic music as a hobby. I
+        invite you to check out my music in the 'Music' section, where you can also leave me some feedback. Any feedback
+        would be greatly appreciated!
         <ThankU>Thank You For Your Time!</ThankU>
       </Article>
     </AboutMeSectionContainer>

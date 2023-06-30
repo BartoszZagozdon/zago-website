@@ -20,6 +20,10 @@ const NavButtonsContainer = styled.div`
   @media only screen and (max-width: 850px) {
     right: 0;
   }
+
+  @media only screen and (min-width: 2000px) {
+    left: 70%;
+  }
 `;
 
 const NavButton = styled.button`

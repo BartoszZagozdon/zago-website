@@ -42,9 +42,11 @@ const WriteComment: React.FC<{ dbId: string }> = ({ dbId }) => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (stars !== 0) {
+      const name = e.currentTarget.username.value === '' ? 'Anonymous' : e.currentTarget.username.value;
+
       const review = {
         stars: stars,
-        name: e.currentTarget.username.value,
+        name: name,
         comment: e.currentTarget.comment.value,
       };
 
