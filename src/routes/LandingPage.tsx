@@ -54,8 +54,8 @@ const LandingPage = () => {
         Hello there! My real name is Bartosz Zagozdon, but I go by Zago when it comes to music production. I'm currently
         pursuing my dream of becoming a Front-end Developer, and you can find some of my (hopefully) cool projects in
         the 'Programming' section. Apart from coding, I have a great passion for making electronic music as a hobby. I
-        invite you to check out my music in the 'Music' section, where you can also leave me some feedback. Any feedback
-        would be greatly appreciated!
+        invite you to check out my music in the 'Music' section, where you can also leave me some feedback, which would
+        be greatly appreciated!
         <ThankU>Thank You For Your Time!</ThankU>
       </Article>
     </AboutMeSectionContainer>

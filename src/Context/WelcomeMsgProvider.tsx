@@ -3,7 +3,7 @@ import { ReactNode, createContext, useState } from 'react';
 import WelcomeMsgContextType from '../Types/WelcomeMsg/WelcomeMsgContextType';
 
 export const WelcomeMsgContext = createContext<WelcomeMsgContextType>({
-  msg: 'Hi! My name is Zago ;)',
+  msg: "Hi! I'm Bartek ;)",
   setMsg: () => {},
 });
 

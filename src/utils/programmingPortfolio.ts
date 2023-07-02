@@ -18,12 +18,6 @@ const programmingPortfolio = [
     description: 'App connects to SpotifyAPI and displays random artists',
   },
   {
-    name: 'To-Do List',
-    repo: 'https://github.com/BartoszZagozdon/todo-list',
-    demo: 'https://todo-list-5e738.web.app/',
-    description: 'Simple To-Do list in React',
-  },
-  {
     name: 'Link Shortener',
     repo: 'https://github.com/BartoszZagozdon/link-shortener-example',
     demo: 'https://papaya-mochi-ddaa1c.netlify.app/',

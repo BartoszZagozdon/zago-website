@@ -226,7 +226,7 @@ const AudioPlayer: React.FC<{ song: string }> = ({ song }) => {
           onTimeUpdate={handleTimeUpdate}
           onDurationChange={handleDurationChange}
         />
-        <button style={{ backgroundColor: 'black', border: 'none' }} onClick={togglePlay}>
+        <button style={{ backgroundColor: '#2A2F90', border: 'none' }} onClick={togglePlay}>
           {isPlaying ? <StyledPause /> : <StyledPlay />}
         </button>
         <div style={{ width: '45px' }}>{formatTime(currentTime)}</div>
