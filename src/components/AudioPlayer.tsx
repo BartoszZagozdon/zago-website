@@ -21,16 +21,14 @@ const StyledSpeaker = styled(GiSpeaker)`
 `;
 
 const ProgressBar = styled.input<{ progress: number }>`
-  -webkit-appearance: none;
+  appearance: none;
   width: 300px;
   height: 5px;
   background: lime;
   outline: none;
-  appearance: none;
   position: relative;
 
-  &::-webkit-slider-thumb {
-    -webkit-appearance: none;
+  &::-moz-range-thumb {
     appearance: none;
     width: 15px;
     height: 15px;
@@ -38,12 +36,11 @@ const ProgressBar = styled.input<{ progress: number }>`
     border-radius: 50%;
     cursor: pointer;
     margin-top: -5px;
-
     position: relative;
     z-index: 3;
   }
 
-  &::-webkit-slider-runnable-track {
+  &::-moz-range-track {
     height: 5px;
     background: #605eec;
     position: relative;
@@ -59,34 +56,11 @@ const ProgressBar = styled.input<{ progress: number }>`
     z-index: 2;
   }
 
-  @media only screen and (max-width: 1560px) {
-    width: 200px;
-  }
-
-  @media only screen and (max-width: 970px) {
-    width: 150px;
-  }
-`;
-
-const VolumeBar = styled.input<{ progress: number }>`
-  -webkit-appearance: none;
-  width: 75px;
-  height: 5px;
-  background: lime;
-  outline: none;
-  appearance: none;
-  position: relative;
-
-  transform: rotate(270deg);
-  transform-origin: top left;
-
   &::-webkit-slider-thumb {
-    -webkit-appearance: none;
     appearance: none;
     width: 15px;
     height: 15px;
     background: pink;
-
     border-radius: 50%;
     cursor: pointer;
     margin-top: -5px;
@@ -95,6 +69,52 @@ const VolumeBar = styled.input<{ progress: number }>`
   }
 
   &::-webkit-slider-runnable-track {
+    height: 5px;
+    background: #605eec;
+    position: relative;
+  }
+
+  @media only screen and (max-width: 1560px) {
+    width: 200px;
+  }
+
+  @media only screen and (max-width: 970px) {
+    width: 150px;
+  }
+
+  @media only screen and (max-width: 525px) {
+    width: 100px;
+  }
+
+  @media only screen and (max-width: 455px) {
+    width: 50px;
+  }
+`;
+
+const VolumeBar = styled.input<{ progress: number }>`
+  appearance: none;
+  width: 75px;
+  height: 5px;
+  background: lime;
+  outline: none;
+  position: relative;
+
+  transform: rotate(270deg);
+  transform-origin: top left;
+
+  &::-moz-range-thumb {
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    background: pink;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-top: -5px;
+    position: relative;
+    z-index: 3;
+  }
+
+  &::-moz-range-track {
     height: 5px;
     background: #605eec;
     position: relative;
@@ -108,6 +128,24 @@ const VolumeBar = styled.input<{ progress: number }>`
     width: ${({ progress }) => progress + 1 + '%'};
     background: violet;
     z-index: 2;
+  }
+
+  &::-webkit-slider-thumb {
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    background: pink;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-top: -5px;
+    position: relative;
+    z-index: 3;
+  }
+
+  &::-webkit-slider-runnable-track {
+    height: 5px;
+    background: #605eec;
+    position: relative;
   }
 `;
 

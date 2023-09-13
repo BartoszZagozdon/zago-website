@@ -31,6 +31,10 @@ const TrackDetailContainer = styled(BorderRules)`
   gap: 10px;
   text-align: center;
   padding: 20px;
+
+  @media only screen and (max-width: 390px) {
+    width: 90%;
+  }
 `;
 
 const TrackOverview = styled.div`

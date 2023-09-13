@@ -1,25 +1,12 @@
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 
-const GradientBorderAnimation = keyframes`
-  0% {
-    border-image-source: linear-gradient(to left, #743a11, #d53a9a);
-  }
-  50% {
-    border-image-source: linear-gradient(to right, #89be24, #d676a9);
-  }
-  75% {
-    border-image-source: linear-gradient(to left, #9bf234, #d88da9);
-  }
-  100% {
-    border-image-source: linear-gradient(to left, #743a11, #d53a9d);
-  }
-`;
+import borderAnim from '../assets/border-animation.gif';
 
 const BorderRules = styled.div`
   border: 3px solid;
   border-image-slice: 1;
-  border-image-source: linear-gradient(to left, #743a11, #d53a9d);
-  animation: ${GradientBorderAnimation} 3s linear infinite;
+
+  border-image-source: url(${borderAnim});
 `;
 
 export default BorderRules;

@@ -4,7 +4,9 @@ import { TypeAnimation } from 'react-type-animation';
 import logo from '../assets/logo.png';
 
 import Navigation from '../components/Navigation';
+import MobileNav from './MobileNav';
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 const glowAnimation = keyframes`
   0% {
@@ -26,6 +28,10 @@ const Header = styled.header`
   justify-content: space-around;
   padding-inline: 90px;
   position: relative;
+
+  @media only screen and (max-width: 615px) {
+    justify-content: center;
+  }
 `;
 
 const Location = styled.h1`
@@ -40,6 +46,10 @@ const Location = styled.h1`
 
   @media only screen and (max-width: 850px) {
     left: 150px;
+  }
+
+  @media only screen and (max-width: 615px) {
+    display: none;
   }
 `;
 
@@ -59,14 +69,33 @@ const Logo = styled.img`
   @media only screen and (max-width: 850px) {
     left: 0;
   }
+
+  @media only screen and (max-width: 615px) {
+    display: none;
+  }
+`;
+
+const LogoMobile = styled.img`
+  width: 150px;
+  height: 150px;
+  animation: ${glowAnimation} 2s infinite;
+  display: none;
+
+  @media only screen and (max-width: 615px) {
+    display: block;
+  }
 `;
 
 const HeaderComponent: React.FC<{ msg: string }> = ({ msg }) => {
   const navigate = useNavigate();
 
+  const [showMobile, setShowMobile] = useState(false);
+
   return (
     <Header>
       <Logo src={logo} onClick={() => navigate('/')} />
+      <LogoMobile src={logo} onClick={() => setShowMobile(!showMobile)} />
+      {showMobile && <MobileNav setShowMobile={setShowMobile} />}
       <Location>
         <TypeAnimation key={msg} sequence={[msg]} cursor color="#FFFFFF" />
       </Location>

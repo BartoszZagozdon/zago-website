@@ -24,9 +24,13 @@ const NavButtonsContainer = styled.div`
   @media only screen and (min-width: 2000px) {
     left: 70%;
   }
+
+  @media only screen and (max-width: 615px) {
+    display: none;
+  }
 `;
 
-const NavButton = styled.button`
+export const NavButton = styled.button`
   background-color: #58bf16;
   font-size: 1.2rem;
   padding: 10px 20px;

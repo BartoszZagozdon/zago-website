@@ -20,6 +20,10 @@ const ProgrammingContainer = styled(BorderRules)`
   gap: 10px;
   text-align: center;
   padding: 20px;
+
+  @media only screen and (max-width: 425px) {
+    width: 90%;
+  }
 `;
 
 const Programming = () => {
